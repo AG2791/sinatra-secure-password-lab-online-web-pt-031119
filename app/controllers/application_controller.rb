@@ -19,7 +19,7 @@ class ApplicationController < Sinatra::Base
   post "/signup" do
     #if username or password is blank, redirect to failure erb, else refirct to login erb.  
   if params[:username] == "" || params[:password] == ""
-      redirect to '/failure'
+      redirect '/failure'
     else
       User.create(username: params[:username], password: params[:password])
       redirect '/login'
