@@ -40,8 +40,8 @@ class ApplicationController < Sinatra::Base
   end
 
   post "/login" do
-    ##verify username and password
-    #search DB for usernam e
+    #verify username and password
+    #search DB for username 
      @user = User.find_by(username: params[:username])
      
     if @user && @user.authenticate(params[:password])
