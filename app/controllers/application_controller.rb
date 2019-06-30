@@ -40,19 +40,10 @@ class ApplicationController < Sinatra::Base
   end
 
   post "/login" do
-  #   #search DB for username 
-  #   @user = User.find_by(username: params[:username])
+    #search DB for username 
+    @user = User.find_by(username: params[:username])
      
-  #   #verify username and password match, if match set as session id and redirect to account erb, else redirect to failure erb.
-  #   if @user && @user.authenticate(params[:password])
-  #     session[:user_id] = @user.id
-  #     redirect to "/account"
-  #   else
-  #     redirect to "/failure"
-  #   end
-  # end
-  
-   @user = User.find_by(username: params[:username])
+    #verify username and password match, if match set as session id and redirect to account erb, else redirect to failure erb.
     if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id
       redirect to "/account"
@@ -60,6 +51,8 @@ class ApplicationController < Sinatra::Base
       redirect to "/failure"
     end
   end
+  
+
 
   get "/failure" do
     erb :failure
