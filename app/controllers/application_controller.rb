@@ -42,12 +42,12 @@ class ApplicationController < Sinatra::Base
   post "/login" do
     ##verify username and password
     
-    user = User.find_by(:username => params[:username])
-		 if user && user.authenticate(params[:password])
-    session[:user_id] = user.id
-      redirect '/account'
+     @user = User.find_by(username: params[:username])
+    if @user && @user.authenticate(params[:password])
+      session[:user_id] = @user.id
+      redirect to "/account"
     else
-      redirect '/failure'
+      redirect to "/failure"
     end
 
   
