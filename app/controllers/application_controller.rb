@@ -43,7 +43,7 @@ class ApplicationController < Sinatra::Base
     #search DB for username 
      @user = User.find_by(username: params[:username])
      
-     #verify username and password match, if match redirect to account erb, else redirect to failure erb.
+     #verify username and password match, if match set as session id and redirect to account erb, else redirect to failure erb.
     if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id
       redirect to "/account"
