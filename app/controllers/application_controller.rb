@@ -46,9 +46,9 @@ class ApplicationController < Sinatra::Base
     #verify username and password match, if match set as session id and redirect to account erb, else redirect to failure erb.
     if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id
-      redirect to "/account"
+      redirect "/account"
     else
-      redirect to "/failure"
+      redirect "/failure"
     end
   end
   
